@@ -1,6 +1,6 @@
 namespace ABPD_Test_1.Models;
 
-public class CPU
+public class Cpu
 {
     public int Id { get; set; }
     public string Name { get; set; }
