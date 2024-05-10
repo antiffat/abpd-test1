@@ -39,5 +39,31 @@ public class ComputerRepository : IComputerRepository
             }
         }
     }
+
+    public bool DeleteComputer(int computerId)
+    {
+        using (var connection = new SqlConnection(_connectionString))
+        {
+            connection.Open();
+
+            var deleteComputerQuery = @"
+                DELETE FROM Computer WHERE Id = @Id";
+
+            using (var command = new SqlCommand(deleteComputerQuery, connection))
+            {
+                command.Parameters.AddWithValue("@Id", computerId);
+                int rowsAffected = command.ExecuteNonQuery();
+
+                if (rowsAffected == 0)
+                {
+                    return false;
+                }
+            }
+            
+            connection.Close();
+        }
+        
+        return true;
+    }
     
 }

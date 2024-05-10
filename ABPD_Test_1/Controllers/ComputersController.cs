@@ -33,4 +33,17 @@ public class ComputersController : ControllerBase
             return StatusCode(500, "An error occurred while creating the Computer. Please try again.");
         }
     }
+
+    [HttpDelete("{id}")]
+    public IActionResult DeleteComputer(int id)
+    {
+        bool isDeleted = _computerRepository.DeleteComputer(id);
+
+        if (!isDeleted)
+        {
+            return NotFound($"Computer with ID {id} not found.");
+        }
+        
+        return Ok($"Computer with ID {id} have been deleted.");
+    }
 }
