@@ -12,7 +12,7 @@ builder.Services.AddSwaggerGen();
 
 // Register the repository interface and its implementation
 builder.Services.AddScoped<ICpuRepository, CpuRepository>();
-
+builder.Services.AddScoped<IVideoCardRepository, VideoCardRepository>();
 
 var app = builder.Build();
 

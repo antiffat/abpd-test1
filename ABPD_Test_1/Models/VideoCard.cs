@@ -1,6 +1,6 @@
 namespace ABPD_Test_1.Models;
 
-public class Videocard
+public class VideoCard
 {
     public int Id { get; set; }
     public string Name { get; set; }

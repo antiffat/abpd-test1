@@ -11,7 +11,10 @@ public class CpuRepository : ICpuRepository
     public CpuRepository(IConfiguration configuration)
     {
         _connectionString = configuration.GetConnectionString("DefaultConnection");
-        
+        if (string.IsNullOrEmpty(_connectionString))
+        {
+            throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+        }
     }
 
     public int CreateCpu(CpuCreateDto cpuDto)
